@@ -3,17 +3,15 @@
 
 ---
 
-## Slide 1: Title Slide
 # 🚀 Streamlit Tutorial
 ### Building Interactive Web Applications with Python
 
-**Presented by:** [Your Name]  
-**Date:** [Presentation Date]  
-**For:** Python Students
+**Presented by:** Archana Chaudhary  
+**Date:** July 13th 2025
+**For:** SEEDS Python Students
 
----
 
-## Slide 2: What is Streamlit?
+##  What is Streamlit?
 ### The Python Web App Framework
 
 - **Streamlit** is a Python library for creating web applications
@@ -29,7 +27,7 @@
 
 ---
 
-## Slide 3: What You'll Learn Today
+## What You'll Learn Today
 ### Complete Learning Path
 
 1. **Getting Started** - Your first Streamlit app
@@ -43,7 +41,7 @@
 
 ---
 
-## Slide 4: Installation & Setup
+## Installation & Setup
 ### Getting Ready to Code
 
 **Prerequisites:**
@@ -63,7 +61,7 @@ streamlit run your_app.py
 
 ---
 
-## Slide 5: Lesson 1 - Getting Started
+##  Lesson 1 - Getting Started
 ### Your First Streamlit App
 
 **Key Concepts:**
@@ -77,7 +75,7 @@ streamlit run your_app.py
 
 ---
 
-## Slide 6: Basic Streamlit Commands
+## Basic Streamlit Commands
 ### Essential Functions
 
 ```python
@@ -102,7 +100,7 @@ st.error("Error message!")
 
 ---
 
-## Slide 7: Lesson 2 - Basic Widgets
+##  Lesson 2 - Basic Widgets
 ### Making Apps Interactive
 
 **Widgets Covered:**
@@ -122,7 +120,7 @@ st.error("Error message!")
 
 ---
 
-## Slide 8: Widget Examples
+##  Widget Examples
 ### Interactive Elements in Action
 
 **Button:**
@@ -146,7 +144,7 @@ st.write(f"You are {age} years old.")
 
 ---
 
-## Slide 9: Lesson 3 - Data Display
+##  Lesson 3 - Data Display
 ### Visualizing Information
 
 **Data Display Tools:**
@@ -163,7 +161,7 @@ st.write(f"You are {age} years old.")
 
 ---
 
-## Slide 10: Data Visualization Examples
+## Data Visualization Examples
 ### Charts and Graphs
 
 **Line Chart:**
@@ -188,7 +186,7 @@ st.dataframe(df)
 
 ---
 
-## Slide 11: Lesson 4 - Layout & Styling
+## Lesson 4 - Layout & Styling
 ### Professional App Design
 
 **Layout Tools:**
@@ -205,7 +203,7 @@ st.dataframe(df)
 
 ---
 
-## Slide 12: Layout Examples
+## Layout Examples
 ### Organizing Your App
 
 **Columns:**
@@ -228,7 +226,7 @@ st.sidebar.selectbox("Choose page:", ["Home", "About", "Contact"])
 
 ---
 
-## Slide 13: Lesson 5 - Interactive Features
+##  Lesson 5 - Interactive Features
 ### Advanced Functionality
 
 **Advanced Features:**
@@ -246,7 +244,71 @@ st.sidebar.selectbox("Choose page:", ["Home", "About", "Contact"])
 
 ---
 
-## Slide 14: Session State & Caching
+## File Upload Examples
+### Handling Different File Types
+
+**CSV File Upload with Validation:**
+```python
+import pandas as pd
+import streamlit as st
+
+uploaded_file = st.file_uploader(
+    "Choose a CSV file", 
+    type=['csv'],
+    help="Upload a CSV file to analyze"
+)
+
+if uploaded_file is not None:
+    try:
+        df = pd.read_csv(uploaded_file)
+        st.success(f"✅ File uploaded successfully! Shape: {df.shape}")
+        st.dataframe(df.head())
+        
+        # Show file info
+        st.write(f"**File name:** {uploaded_file.name}")
+        st.write(f"**File size:** {uploaded_file.size} bytes")
+        
+    except Exception as e:
+        st.error(f"❌ Error reading file: {e}")
+```
+
+**Multiple File Upload:**
+```python
+uploaded_files = st.file_uploader(
+    "Upload multiple files",
+    type=['csv', 'xlsx', 'json'],
+    accept_multiple_files=True
+)
+
+if uploaded_files:
+    st.write(f"📁 {len(uploaded_files)} files uploaded:")
+    for file in uploaded_files:
+        st.write(f"- {file.name} ({file.size} bytes)")
+```
+
+**Image Upload with Preview:**
+```python
+from PIL import Image
+
+uploaded_image = st.file_uploader(
+    "Upload an image",
+    type=['png', 'jpg', 'jpeg'],
+    help="Upload an image to process"
+)
+
+if uploaded_image is not None:
+    image = Image.open(uploaded_image)
+    st.image(image, caption=uploaded_image.name, use_column_width=True)
+    
+    # Show image details
+    st.write(f"**Image size:** {image.size}")
+    st.write(f"**Image mode:** {image.mode}")
+```
+
+
+---
+
+## Session State & Caching
 ### Managing App State
 
 **Session State:**
@@ -268,50 +330,7 @@ def expensive_function(data):
     return result
 ```
 
----
-
-## Slide 15: Lesson 6 - Real Projects
-### Building Complete Applications
-
-**Project Examples:**
-- 📊 Data Analysis Dashboard
-- 🧮 Interactive Calculator
-- 📈 Personal Finance Tracker
-- 🎯 Quiz Application
-- 📝 To-Do List Manager
-
-**Skills Applied:**
-- All previous lessons combined
-- Real-world problem solving
-- User experience design
-- Performance optimization
-
----
-
-## Slide 16: Project Showcase
-### What You Can Build
-
-**Beginner Projects:**
-- Simple calculator
-- Personal blog
-- Weather app
-- Quiz application
-
-**Intermediate Projects:**
-- E-commerce dashboard
-- Social media analytics
-- Personal finance tracker
-- Recipe manager
-
-**Advanced Projects:**
-- Machine learning interface
-- Real-time data dashboard
-- Multi-user application
-- API integration platform
-
----
-
-## Slide 17: Best Practices
+##  Best Practices
 ### Tips for Success
 
 **Code Organization:**
@@ -334,7 +353,7 @@ def expensive_function(data):
 
 ---
 
-## Slide 18: Common Pitfalls
+##  Common Pitfalls
 ### What to Avoid
 
 ❌ **Overcomplicating** - Start simple  
@@ -351,7 +370,7 @@ def expensive_function(data):
 
 ---
 
-## Slide 19: Deployment & Sharing
+##  Deployment & Sharing
 ### Taking Your Apps Live
 
 **Streamlit Cloud:**
@@ -374,31 +393,7 @@ def expensive_function(data):
 
 ---
 
-## Slide 20: Next Steps
-### Continuing Your Journey
-
-**Practice Projects:**
-- Build something new every week
-- Experiment with different features
-- Combine with other Python libraries
-- Create your own unique apps
-
-**Advanced Topics:**
-- Streamlit Components
-- Database integration
-- API connections
-- Machine learning interfaces
-- Custom CSS styling
-
-**Community:**
-- Streamlit documentation
-- Community forum
-- GitHub examples
-- Online tutorials
-
----
-
-## Slide 21: Resources & Support
+##  Resources & Support
 ### Where to Get Help
 
 **Official Resources:**
@@ -413,231 +408,10 @@ def expensive_function(data):
 - Share your work
 - Help others learn
 
----
-
-## Slide 22: Q&A Session
-### Questions & Discussion
-
-**Common Questions:**
-- How does Streamlit compare to other frameworks?
-- What are the limitations of Streamlit?
-- How do I deploy my apps?
-- Can I use Streamlit for production apps?
-
-**Discussion Topics:**
-- Your project ideas
-- Challenges you've faced
-- Tips and tricks you've learned
-- Future learning goals
-
----
-
-## Slide 23: Hands-On Workshop
-### Let's Build Together!
-
-**Workshop Activities:**
-1. Create your first Streamlit app
-2. Add interactive widgets
-3. Display some data
-4. Style your app
-5. Deploy to Streamlit Cloud
-
-**Workshop Goals:**
-- Apply what you've learned
-- Build something useful
-- Get hands-on experience
-- Ask questions in real-time
-
----
-
-## Slide 24: Thank You!
-### 🎉 Congratulations!
-
-**You've Learned:**
-- How to create interactive web apps with Python
-- Streamlit fundamentals and advanced features
-- Best practices for app development
-- How to deploy and share your work
-
-**Next Steps:**
-- Practice regularly
-- Build your portfolio
-- Share your projects
-- Continue learning
-
-**Contact Information:**
-- Email: [your.email@example.com]
-- GitHub: [github.com/yourusername]
-- LinkedIn: [linkedin.com/in/yourprofile]
 
 **Happy Coding! 🚀**
 
----
-
-## Slide 25: Bonus Slides - Code Examples
-### Quick Reference
-
-**Basic App Structure:**
-```python
-import streamlit as st
-
-st.set_page_config(page_title="My App")
-st.title("My App")
-
-# Your app code here
-```
-
-**Common Widgets:**
-```python
-# Input widgets
-name = st.text_input("Name:")
-age = st.slider("Age:", 0, 100, 25)
-choice = st.selectbox("Choose:", ["A", "B", "C"])
-
-# Display widgets
-st.write(f"Hello {name}!")
-st.success("Success!")
-```
-
-**Data Display:**
-```python
-import pandas as pd
-import plotly.express as px
-
-df = pd.read_csv("data.csv")
-st.dataframe(df)
-fig = px.line(df, x='x', y='y')
-st.plotly_chart(fig)
-```
-
----
-
-## Slide 26: Troubleshooting Guide
-### Common Issues & Solutions
-
-**App Not Running:**
-```bash
-# Check installation
-pip install streamlit
-
-# Run app
-streamlit run app.py
-
-# Check directory
-pwd
-ls
-```
-
-**Import Errors:**
-- Install missing packages
-- Check Python environment
-- Verify file paths
-
-**Layout Issues:**
-- Use columns for side-by-side content
-- Check container widths
-- Test on different screen sizes
-
-**Performance Problems:**
-- Use caching for expensive operations
-- Limit data size
-- Optimize algorithms
-
----
-
-## Slide 27: Advanced Features Preview
-### What's Next?
-
-**Streamlit Components:**
-- Custom interactive elements
-- Third-party integrations
-- Advanced visualizations
-
-**Database Integration:**
-- SQLite, PostgreSQL, MySQL
-- Data persistence
-- User accounts
-
-**API Integration:**
-- External services
-- Real-time data
-- Web scraping
-
-**Machine Learning:**
-- Model interfaces
-- Training dashboards
-- Prediction tools
-
----
-
-## Slide 28: Project Ideas Gallery
-### Inspiration for Your Next App
-
-**Data Science:**
-- Stock price analyzer
-- Weather dashboard
-- Social media sentiment analyzer
-- Personal fitness tracker
-
-**Education:**
-- Interactive tutorials
-- Quiz applications
-- Study planners
-- Progress trackers
-
-**Business:**
-- Sales dashboards
-- Inventory management
-- Customer analytics
-- Project management
-
-**Personal:**
-- Personal finance tracker
-- Recipe manager
-- Travel planner
-- Habit tracker
-
----
-
-## Slide 29: Community Showcase
-### Amazing Streamlit Apps
-
-**Featured Apps:**
-- COVID-19 Dashboard
-- Stock Market Analyzer
-- Machine Learning Model Interface
-- Interactive Data Explorer
-- Personal Portfolio
-
-**What Makes Them Great:**
-- Clean design
-- Useful functionality
-- Good performance
-- User-friendly interface
-
-**Your Apps Could Be Here Too!**
-
----
-
-## Slide 30: Final Words
-### Your Streamlit Journey Begins
-
-**Remember:**
-- Start simple and build up
-- Practice regularly
-- Learn from others
-- Share your work
-- Have fun!
-
-**You Now Have:**
-- ✅ Streamlit fundamentals
-- ✅ Interactive app skills
-- ✅ Data visualization tools
-- ✅ Deployment knowledge
-- ✅ Project ideas
-
-**Go Build Something Amazing! 🚀**
-
----
+--
+--
 
 *This presentation accompanies the comprehensive Streamlit tutorial. Use these slides to guide your learning and share knowledge with others.* 
