@@ -176,7 +176,12 @@ st.plotly_chart(fig)
 
 **Bar Chart:**
 ```python
-st.bar_chart(data)
+# Example data for bar chart
+data = pd.DataFrame({
+    'Category': ['A', 'B', 'C', 'D', 'E'],
+    'Values': [23, 45, 56, 78, 32]
+})
+st.bar_chart(data.set_index('Category'))
 ```
 
 **DataFrame:**
@@ -311,7 +316,7 @@ if uploaded_image is not None:
 ## Session State & Caching
 ### Managing App State
 
-**Session State:**
+**Session State: Counter example**
 ```python
 if 'counter' not in st.session_state:
     st.session_state.counter = 0
@@ -320,6 +325,29 @@ if st.button("Increment"):
     st.session_state.counter += 1
 
 st.write(f"Count: {st.session_state.counter}")
+```
+
+
+**Session State: user data example**
+```python
+st.subheader("User Data Storage")
+user_name = st.text_input("Enter your name:", key="name_input")
+user_age = st.number_input("Enter your age:", min_value=0, max_value=120, key="age_input")
+
+if 'user_data' not in st.session_state:
+    st.session_state.user_data = {}
+
+if st.button("Save User Data"):
+    st.session_state.user_data = {
+        'name': user_name,
+        'age': user_age,
+        'timestamp': time.time()
+    }
+    st.success("User data saved!")
+
+if st.session_state.user_data:
+    st.write("**Saved user data:**")
+    st.json(st.session_state.user_data)
 ```
 
 **Caching:**
